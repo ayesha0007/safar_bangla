@@ -1,0 +1,226 @@
+{
+    "flights": [
+        {
+            "Airline_name": "AirBangla",
+            "From": "Dhaka",
+            "To": "Chittagong",
+            "Depart": "2025-03-20 08:00:00",
+            "Price": 5000.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "SkyAir",
+            "From": "Dhaka",
+            "To": "Sylhet",
+            "Depart": "2025-03-20 10:00:00",
+            "Price": 4500.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "FlyBangla",
+            "From": "Chittagong",
+            "To": "Dhaka",
+            "Depart": "2025-03-20 12:00:00",
+            "Price": 6000.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "AirBangla",
+            "From": "Dhaka",
+            "To": "Rajshahi",
+            "Depart": "2025-03-21 06:30:00",
+            "Price": 5500.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "SkyAir",
+            "From": "Sylhet",
+            "To": "Dhaka",
+            "Depart": "2025-03-21 07:00:00",
+            "Price": 4700.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "FlyBangla",
+            "From": "Dhaka",
+            "To": "Barisal",
+            "Depart": "2025-03-21 10:30:00",
+            "Price": 5200.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "AirBangla",
+            "From": "Rajshahi",
+            "To": "Dhaka",
+            "Depart": "2025-03-21 13:30:00",
+            "Price": 5700.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "SkyAir",
+            "From": "Chittagong",
+            "To": "Sylhet",
+            "Depart": "2025-03-21 16:00:00",
+            "Price": 5100.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "FlyBangla",
+            "From": "Barisal",
+            "To": "Dhaka",
+            "Depart": "2025-03-22 07:00:00",
+            "Price": 5300.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "AirBangla",
+            "From": "Dhaka",
+            "To": "Khulna",
+            "Depart": "2025-03-22 09:00:00",
+            "Price": 5600.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "SkyAir",
+            "From": "Dhaka",
+            "To": "Chittagong",
+            "Depart": "2025-03-22 11:00:00",
+            "Price": 4800.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "FlyBangla",
+            "From": "Rajshahi",
+            "To": "Sylhet",
+            "Depart": "2025-03-22 14:00:00",
+            "Price": 5100.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "AirBangla",
+            "From": "Chittagong",
+            "To": "Rajshahi",
+            "Depart": "2025-03-22 16:00:00",
+            "Price": 5500.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "SkyAir",
+            "From": "Sylhet",
+            "To": "Barisal",
+            "Depart": "2025-03-23 08:00:00",
+            "Price": 4900.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "FlyBangla",
+            "From": "Dhaka",
+            "To": "Rajshahi",
+            "Depart": "2025-03-23 10:00:00",
+            "Price": 5400.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "AirBangla",
+            "From": "Dhaka",
+            "To": "Khulna",
+            "Depart": "2025-03-17 3:30:00",
+            "Price": 6000.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "SkyAir",
+            "From": "Rajshahi",
+            "To": "Chittagong",
+            "Depart": "2025-03-23 15:00:00",
+            "Price": 5300.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "FlyBangla",
+            "From": "Sylhet",
+            "To": "Barisal",
+            "Depart": "2025-03-23 17:00:00",
+            "Price": 5200.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "AirBangla",
+            "From": "Barisal",
+            "To": "Dhaka",
+            "Depart": "2025-03-24 08:00:00",
+            "Price": 5100.00,
+            "Capacity": 30
+        },
+        {
+            "Airline_name": "SkyAir",
+            "From": "Chittagong",
+            "To": "Khulna",
+            "Depart": "2025-03-24 10:30:00",
+            "Price": 4800.00,
+            "Capacity": 30
+        }
+    ],
+    "flight_reservations": [
+        {
+            "tickets": 10,
+            "Flight_Info_id": 1
+        },
+        {
+            "tickets": 15,
+            "Flight_Info_id": 2
+        },
+        {
+            "tickets": 5,
+            "Flight_Info_id": 3
+        },
+        {
+            "tickets": 12,
+            "Flight_Info_id": 4
+        },
+        {
+            "tickets": 20,
+            "Flight_Info_id": 5
+        },
+        {
+            "tickets": 10,
+            "Flight_Info_id": 6
+        },
+        {
+            "tickets": 8,
+            "Flight_Info_id": 7
+        },
+        {
+            "tickets": 3,
+            "Flight_Info_id": 8
+        },
+        {
+            "tickets": 6,
+            "Flight_Info_id": 9
+        },
+        {
+            "tickets": 18,
+            "Flight_Info_id": 10
+        },
+        {
+            "tickets": 13,
+            "Flight_Info_id": 11
+        },
+        {
+            "tickets": 9,
+            "Flight_Info_id": 12
+        },
+        {
+            "tickets": 14,
+            "Flight_Info_id": 13
+        },
+        {
+            "tickets": 11,
+            "Flight_Info_id": 14
+        },
+        {
+            "tickets": 19,
+            "Flight_Info_id": 15
+        }
+    ]
+}

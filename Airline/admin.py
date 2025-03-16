@@ -6,7 +6,7 @@
 
 
 from django.contrib import admin
-from .models import Flights, Flight_Reserve
+from .models import Flight_Reserve, Flights 
 
 @admin.register(Flights)
 class FlightsAdmin(admin.ModelAdmin):
@@ -19,8 +19,14 @@ class FlightsAdmin(admin.ModelAdmin):
 
 @admin.register(Flight_Reserve)
 class FlightReserveAdmin(admin.ModelAdmin):
-    list_display = ('user', 'Flight_Info', 'tickets')  # Show these in admin panel
-    list_filter = ('user', 'Flight_Info')  # Filter sidebar
-    search_fields = ('user__username', 'Flight_Info__Airline_name')  # Search by username & flight
-    readonly_fields = ('Flight_Info', 'user')  # Prevent modifying these
+    list_display = ('user_id', 'Flight_Info_id', 'tickets')  # Show these in admin panel
+    list_filter = ('user_id', 'Flight_Info_id', 'tickets')  # Filter sidebar 
+    search_fields = ('user__username', 'Flight_Info_id__Airline_name')  # Search by username & flight
+    readonly_fields = ('Flight_Info_id', 'user_id', 'tickets')  # Prevent modifying these
+    def user(self, obj):
+        # If you have a ForeignKey to a user, access it like this
+        return obj.user_id
+    user.short_description = 'User'  # Optional: To give a custom name in admin display
+
+# admin.site.register(Flight_Reserve, FlightReserveAdmin)
 

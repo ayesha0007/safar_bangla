@@ -162,71 +162,63 @@
                        
                         
                          
-                          {% if Fform is None %}
-                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                            <div class=" row">
-                             <div class="col-lg-12 col-sm-6">
-                                 <form class="form_color p-5" action="{% url 'Home' %}" method="GET">
-                                     
-                                     <div class="row  gy-2 ">
-                                         <label>Choose Destination</label>
-                                             <div class="col-lg-3 col-sm-12 d-flex">
-                                                 <select name="det_from" class="form-select" aria-label="Default select example">
-                                                     <option value="None" selected>Destination From</option>
-                                                     <option value="CAI" >Dhaka</option>
-                                                     <option value="SSH" >Rajshahi</option>
-                                                     <option value="HGR" >Sylhet</option>
-                                                     <option value="HBE" >Cox's Bazar</option>
-                                                 </select>
-                                             </div>
-                                             <div class="col-lg-3 col-sm-12 d-flex">
-                                                <select name="det_to" class="form-select" aria-label="Default select example">
-                                                    <option value="None" selected>Destination To</option>
-                                                    <option value="CAI" >Khulna</option>
-                                                    <option value="SSH" >Cox's Bazar</option>
-                                                    <option value="HGR" >Jessore</option>
-                                                    <option value="HBE" >Saidpur</option>
+                          
+                          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-6">
+                                    <form class="form_color p-5" action="{% url 'biman_flights' %}" method="GET">
+                                        <div class="row gy-2">
+                                            <label>Choose Destination</label>
+                                            <div class="col-lg-3 col-sm-12 d-flex">
+                                                <select name="det_from" class="form-select" aria-label="Default select example">
+                                                    <option value="None" selected>Destination From</option>
+                                                    <option value="CAI">Dhaka</option>
+                                                    <option value="SSH">Rajshahi</option>
+                                                    <option value="HGR">Sylhet</option>
+                                                    <option value="HBE">Cox's Bazar</option>
                                                 </select>
                                             </div>
-                                            {% if profile.vip %} <label style="color:red">U will have 10% off the reservation price</label> {% else %}  {% endif %}
-                                             <div class="col-lg- col-sm-12 d-flex justify-content-center">
-                                                 <button type="submit"  name="Flights" class="btn btn-primary tm-btn-search mt-3">See Flights</button>
-                                             </div>
-         
-                                         </div>
-                                     </div>
-                                 </form>
-                             </div>
-                         </div>
-                        </div>
-                            
+                                            <div class="col-lg-3 col-sm-12 d-flex">
+                                                <select name="det_to" class="form-select" aria-label="Default select example">
+                                                    <option value="None" selected>Destination To</option>
+                                                    <option value="CAI">Khulna</option>
+                                                    <option value="SSH">Cox's Bazar</option>
+                                                    <option value="HGR">Jessore</option>
+                                                    <option value="HBE">Saidpur</option>
+                                                </select>
+                                            </div>
+                        
+                                            {% if profile.vip %}
+                                            <label style="color:red">You will have 10% off the reservation price</label>
+                                            {% endif %}
+                        
+                                            <div class="col-lg-12 col-sm-12 d-flex justify-content-center">
+                                                <button type="submit" name="Flights" class="btn btn-primary tm-btn-search mt-3">See Flights</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        
+                            <!-- If flights data exists, show the available flights -->
+                            {% if flights %}
+                            <div class="row">
+                                <h3>Available Flights:</h3>
+                                {% for flight in flights %}
+                                    <div class="col-lg-4">
+                                        <div class="flight-card">
+                                            <h5>{{ flight.Airline_name }}</h5>
+                                            <p>From: {{ flight.From }} To: {{ flight.To }}</p>
+                                            <p>Departure: {{ flight.Depart }}</p>
+                                            <p>Price: ${{ flight.Price }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
                             {% else %}
-                            <div class="tab-pane fade show active" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                             <div class=" row">
-                                 <div class="col-lg-12 col-sm-6">
-                                     <form class="form_color p-5" name="Flights" action="{% url 'flight' det_from det_to  %}" method="POST">
-                                         {% csrf_token %}
-                                     
-                                         <div class="row  gy-2 ">
-                                             <label >Filghts</label>
-                                             {% render_field Fform.Flight_Info class="form-select" %}
-                                             <label >Tickets</label>
-                                             {% render_field Fform.tickets  class="form-control"%}
-                                              
-                                             {% if profile.vip %} <label style="color:red">U will have 10% off the reservation price</label> {% else %}  {% endif %}
-                                                 <div class="col-lg- col-sm-12 d-flex justify-content-center">
-                                                     <button type="submit" class="btn btn-primary tm-btn-search mt-3">Book Flight</button>
-                                                 </div>
-             
-                                             </div>
-                                         </div>
-                                     </form>
-                                 </div>
-                              </div>
-                            </div> 
-                             {% endif %}
-                        </div>    
-                    </div>
+                            <p>No flights available for the selected destinations.</p>
+                            {% endif %}
+                        </div>                        
                 </div>
             </div>
         </header>

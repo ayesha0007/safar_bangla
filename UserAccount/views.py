@@ -128,12 +128,12 @@ def booking_list(request, ID):
 
         if 'Dflight' in request.POST:
             DFlight = Flight_Reserve.objects.get(id=request.POST['Dflight'])
-            Flight = Flights.objects.get(id=DFlight.Flight_Info.id)
+            Flight = Flights.objects.get(id=DFlight.Flight_Info_id.id)
             if customer.vip:
-                customer.amount_to_pay -= (DFlight.Flight_Info.Price + flights.tickets) * (1- 0.1)
+                customer.amount_to_pay -= (DFlight.Flight_Info_id.Price + flights.tickets) * (1- 0.1)
                 customer.save()
             else:
-                customer.amount_to_pay -= DFlight.Flight_Info.Price + flights.tickets
+                customer.amount_to_pay -= DFlight.Flight_Info_id.Price + flights.tickets
                 customer.save()
             Flight.Capacity += DFlight.tickets
             Flight.save()

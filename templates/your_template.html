@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Flights</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Available Flights</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Airline</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Departure</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flight in flights %}
+                <tr>
+                    <td>{{ flight.Airline_name }}</td>
+                    <td>{{ flight.From }}</td>
+                    <td>{{ flight.To }}</td>
+                    <td>{{ flight.Depart }}</td>
+                    <td>{{ flight.Price }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No flights available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
