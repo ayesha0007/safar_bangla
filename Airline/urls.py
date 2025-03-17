@@ -12,7 +12,9 @@
 
 from django.urls import path
 from . import views
+
 urlpatterns = [
     # Route to get flights data
+    path('Flights/', views.get_flights, name='get_flights'),
     path('biman-flights/', views.get_flights, name="biman_flights"),
 ]

@@ -26,7 +26,7 @@ class Room (models.Model):
 
 class Reserve_Room (models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    Room = models.ForeignKey(Room, on_delete=models.CASCADE, default='100')
+    Room_id = models.ForeignKey(Room, on_delete=models.CASCADE, default='100')
     Rcheck_in = models.DateTimeField()
     Rcheck_out = models.DateTimeField()
 
