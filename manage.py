@@ -2,6 +2,10 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+json_file_path = 'data/flights.json'
+
+
+
 
 
 def main():
