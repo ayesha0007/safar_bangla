@@ -7,7 +7,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # Path to your JSON file
-        json_file_path = 'E:\safar_bangla\data\flights.json'
+        json_file_path = 'C:\safar_bangla\data\flights.json'
 
         try:
             # Open and load the JSON data

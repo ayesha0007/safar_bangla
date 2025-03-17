@@ -8,11 +8,13 @@ class Room (models.Model):
         ('DOB', 'Double'),
         ('DEX', 'Deluxe'),
     )
-    Hotels =(
-        ('FRS','Four Season'),
-        ('HIL','Hilton'),
-        ('MAR','Marriot'),
-    )
+    Hotels = (
+    ('HIL', 'Hilton'),
+    ('MAR', 'Marriott'),
+    ('RAD', 'Radisson'),
+    ('SHR', 'Sheraton'),
+    ('INT', 'InterContinental'),
+)
     Hname = models.CharField(max_length=20,choices=Hotels,default="Hilton")
     Rnum = models.IntegerField(unique=True)
     Rcategory = models.CharField(max_length=3, choices=Rtype)

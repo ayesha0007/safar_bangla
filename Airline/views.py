@@ -10,7 +10,7 @@ from .forms import FlightForm
 import json
 
 
-JSON_FILE_PATH = r"E:\safar_bangla\data\flights.json"
+JSON_FILE_PATH = r"C:\safar_bangla\data\flights.json"
 
 
 # Function to load data from JSON file
