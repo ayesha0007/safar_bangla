@@ -10,7 +10,28 @@ from Hotels.models import Reserve_Room, Room
 from Airline.models import Flight_Reserve, Flights
 # Create your views here.
 
+def marks(request):
+    return render(request, 'marks.html')
+@superuser_required
+def all_link_view(request):
+    # Path to the flights.json file
+    file_path = os.path.join(settings.BASE_DIR, 'your_app_name', 'flights.json')  # Change 'your_app_name'
+    
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+    
+    return JsonResponse(data, safe=False)
 
+def info_view(request):
+    data = {
+        "name": "Fahim Musubbir , Ayesha Shidika",
+        "id": "2111476 , 2221891",
+        "personal_notion_page": "//",
+        "personal_group_page_notion": "//",
+        "github_id": "mridhafahim , ayesha0007",
+        "project_github_link": "omyouhttps://github.com/ayesha0007/safar_bangla.git"
+    }
+    return JsonResponse(data)
 def index(request):
     rtype = request.GET.get('rtype')
     det_to = request.GET.get('det_to')

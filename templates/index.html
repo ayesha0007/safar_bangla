@@ -1,4 +1,4 @@
-{% load  static %}
+\\\\\\\\\\\\\\\{% load  static %}
 {% load widget_tweaks %}
 
 <html>
@@ -28,6 +28,10 @@
                             <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Home</a>
                             <div class="link_home"></div>
                         </li>
+                        <li class="nav-item sel_marks">
+                            <a class="nav-link" href="{% url 'marks' %}">Marks</a>
+                            <div class="link_marks"></div>
+                        </li> 
                         <li class="nav-item sel_about">
                             <a class="nav-link " href="#2">About</a>
                             <div class="link_about"></div>
@@ -90,6 +94,7 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link  active"  id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Flight</button>
                         </li>
+                                               
                         {% endif %}
                     </ul>
                 <div class="tab-content" id="pills-tabContent">

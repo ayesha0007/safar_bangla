@@ -8,7 +8,9 @@ from django.shortcuts import render
 from .models import Flights
 from .forms import FlightForm
 import json
-
+import os
+from django.core.exceptions import PermissionDenied
+from django.conf import settings
 
 JSON_FILE_PATH = r"C:\safar_bangla\data\flights.json"
 
@@ -20,11 +22,22 @@ def load_flights_from_json():
         return data.get('Flights', [])  # Ensure we return the list of flights
 
 
-def get_flights(request):
-    # Load flight data from JSON file
+def filter_flights_by_route(origin, destination):
     flights = load_flights_from_json()
+    filtered_flights = [flight for flight in flights if flight['From'] == origin and flight['To'] == destination]
+    return filtered_flights
 
-    print(f"Flights retrieved: {flights}")  # Debugging
+
+def get_flights(request):
+    det_from = request.GET.get('det_from')
+    det_to = request.GET.get('det_to')
+
+    if det_from and det_to and det_from != "None" and det_to != "None":
+        flights = filter_flights_by_route(det_from, det_to)
+    else:
+        flights = []
+
+    print(f"Filtered flights: {flights}")  # Debugging
 
     return render(request, 'your_template.html', {'flights': flights})
 
@@ -73,3 +86,12 @@ def flight_booking(request, det_from, det_to, y=0):
         return F_form
 
     return render(request, 'index.html', {'Fform': F_form, 'det_from': det_from, 'det_to': det_to})
+
+
+def superuser_required(view_func):
+    def wrapper(request, *args, **kwargs):
+        if not request.user.is_authenticated or not request.user.is_superuser:
+            raise PermissionDenied
+        return view_func(request, *args, **kwargs)
+    return wrapper
+

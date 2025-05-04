@@ -13,6 +13,7 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     # Route to get flights data
     path('Flights/', views.get_flights, name='get_flights'),

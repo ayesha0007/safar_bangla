@@ -6,6 +6,32 @@ from datetime import datetime
 from .forms import ReserveForm
 from .models import Reserve_Room, Room
 from UserAccount.models import Profile
+import json
+import os
+from django.http import JsonResponse
+from django.core.exceptions import PermissionDenied
+from django.conf import settings
+
+
+@superuser_required
+def all_link_view(request):
+    # Path to the flights.json file
+    file_path = os.path.join(settings.BASE_DIR, 'your_app_name', 'flights.json')  # Change 'your_app_name'
+    
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+    return JsonResponse(data, safe=False)
+
+def info_view(request):
+    data = {
+        "name": "Fahim Musubbir , Ayesha Shidika",
+        "id": "2111476 , 2221891",
+        "personal_notion_page": "//",
+        "personal_group_page_notion": "//",
+        "github_id": "mridhafahim , ayesha0007",
+        "project_github_link": "omyouhttps://github.com/ayesha0007/safar_bangla.git"
+    }
+    return JsonResponse(data)
 
 # Create your views here.
 def booking(request, rtype, x=0):
@@ -52,3 +78,5 @@ def booking(request, rtype, x=0):
         return form
 
     return render(request, 'index.html', {'form': form, 'rtype': rtype})
+
+
