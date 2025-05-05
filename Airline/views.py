@@ -1,19 +1,14 @@
-# 
-
-
-
-
 from django.http import JsonResponse
 from django.shortcuts import render
 from .models import Flights
 from .forms import FlightForm
+from UserAccount.models import Profile  # Make sure this import is correct
 import json
 import os
-from django.core.exceptions import PermissionDenied
 from django.conf import settings
+from UserAccount.decorators import superuser_required  # ✅ use decorator from UserAccount app
 
-JSON_FILE_PATH = r"C:\safar_bangla\data\flights.json"
-
+JSON_FILE_PATH = os.path.join(settings.BASE_DIR, 'data', 'flights.json')  # ✅ portable path
 
 # Function to load data from JSON file
 def load_flights_from_json():
@@ -42,15 +37,12 @@ def get_flights(request):
     return render(request, 'your_template.html', {'flights': flights})
 
 
-
+@superuser_required  # ✅ apply only where needed
 def flight_booking(request, det_from, det_to, y=0):
-    
     flights_data = load_flights_from_json()
 
-    
     if not Flights.objects.exists():
         for flight in flights_data:
-
             Flights.objects.update_or_create(
                 Flight_number=flight.get('Flight_number', "N/A"),
                 defaults={
@@ -63,7 +55,6 @@ def flight_booking(request, det_from, det_to, y=0):
                 }
             )
 
-    
     F_form = FlightForm(request.POST or None)
     F_form.fields['Flight_Info_id'].queryset = Flights.objects.filter(From=det_from, To=det_to)
 
@@ -76,7 +67,6 @@ def flight_booking(request, det_from, det_to, y=0):
         if FTicket <= 0:
             return JsonResponse({"error": "Invalid number of tickets selected"}, status=400)
 
-        
         F_form.instance.user = request.user
         F_form.save()
 
@@ -86,12 +76,3 @@ def flight_booking(request, det_from, det_to, y=0):
         return F_form
 
     return render(request, 'index.html', {'Fform': F_form, 'det_from': det_from, 'det_to': det_to})
-
-
-def superuser_required(view_func):
-    def wrapper(request, *args, **kwargs):
-        if not request.user.is_authenticated or not request.user.is_superuser:
-            raise PermissionDenied
-        return view_func(request, *args, **kwargs)
-    return wrapper
-
